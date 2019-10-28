@@ -1,0 +1,39 @@
+Mobile app for every type of device (if possible)
+
+Login tab :
+- need email
+- need password
+- can redirect to SignIn tab
+
+SignIn tab :
+- firstname
+- lastname
+- need pseudo
+- need email
+- need password
+- need password confirmation
+- send an email to confirm SignIn ?
+- can redirect to Login tab
+
+Profile tab :
+- can see his private informations
+- can change his information : firstname, lastname, pseudo, email, password
+- can choose a profile pic
+- can see his level
+- can go to the Selected challenges tab
+
+Selected Challenge tab :
+- can see his current challenges
+- can say if a challenge is done by putting some proves on his challenge validation form
+- can see if community validate his challenge
+
+Challenge list tab :
+- list of all the challenges
+- can select the challenge wanted
+- can clic on the challenge to see a description
+
+chat tab :
+- can speak with the community
+
+Community tab :
+- can validate the challenge of other users

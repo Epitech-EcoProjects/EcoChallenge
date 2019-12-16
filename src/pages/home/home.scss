@@ -1,3 +1,21 @@
-page-home {
+.submit-form-butt {
+    --background: #069c24;
+}
 
+hr {
+	height: 2px;
+	color: #069c24;
+	background-color: #069c24;
+	width: 75%;
+	border: none;
+}
+
+ion-label {
+	color: #069c24;
+}
+
+.logo-connect {
+	width: 30%;
+	height: 30%;
+	border-radius: 50%;
 }

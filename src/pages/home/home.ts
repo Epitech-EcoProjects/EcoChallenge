@@ -8,7 +8,17 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   constructor(public navCtrl: NavController) {
-
   }
+
+	async LoginAlert() {
+	 const alert = await this.alertController.create({
+		 header: 'Alert',
+		 subHeader: 'Subtitle',
+		 message: 'Alert',
+		 buttons: ['OK']
+	 });
+
+	 await alert.present();
+ }
 
 }

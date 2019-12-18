@@ -41,7 +41,7 @@ export class HomePage {
 			 email: this.email,
 			 age: this.age,
 			 password: this.password,
-			 date: new Date().toISOString()
+			 date: new Date().toI	SOString()
 		 });
 		 this.resetForm();
  	}

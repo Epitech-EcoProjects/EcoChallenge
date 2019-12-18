@@ -1,3 +1,20 @@
-page-about {
+h1 {
+    margin-left: 20px;
+    font-size: 30px;
+}
+h5 {
+    margin-left: 20px;
+    margin-top: -7px;
+    font-size: medium;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
 
+.add-button {
+    --background: #383a3e;
+    position: absolute;
+    bottom: 5px;
+    width: 96%;
+    --color: #ffffff;
+    margin-left: 2%;
 }

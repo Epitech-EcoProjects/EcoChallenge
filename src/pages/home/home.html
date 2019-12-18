@@ -1,11 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+		<ion-title>
+  		HomePage
+		</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<div id="form">
+	<!-- <div id="form">
 		<div text-center>
 			<img class="logo-connect" src="assets/icon/logo.png"/>
 			<div>
@@ -40,11 +42,40 @@
 							</ion-item>
 						</div>
 						<div padding>
-							<ion-button class="submit-form-butt" size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+							<ion-button (click)="addUserToFirebase()" class="submit-form-butt" size="large" type="submit" expand="block">Register</ion-button>
 						</div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
 		</form>
-	</div>
+	</div> -->
+
+	<!-- <ion-card text-center> -->
+			<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
+			<!-- <div>
+				<ion-button (click)="goToConnectPage()" color="light">Se connecter</ion-button>
+				<ion-button color="medium">S'inscrire</ion-button>
+			</div> -->
+		<h3>Créez votre compte!</h3>
+		<ion-item lines="none">
+			<ion-label floating>Nom</ion-label>
+			<ion-input [(ngModel)]="name"></ion-input>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-label floating>Email</ion-label>
+			<ion-input [(ngModel)]="email"></ion-input>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-label floating>Age</ion-label>
+			<ion-input [(ngModel)]="age" type="number"></ion-input>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-label floating>Mot de passe</ion-label>
+			<ion-input [(ngModel)]="password" type="password"></ion-input>
+		</ion-item>
+		<ion-button (click)="addUserToFirebase()">
+			S'inscrire
+		</ion-button>
+	<!-- </ion-card> -->
+
 </ion-content>

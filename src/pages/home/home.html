@@ -7,75 +7,44 @@
 </ion-header>
 
 <ion-content padding>
-	<!-- <div id="form">
-		<div text-center>
-			<img class="logo-connect" src="assets/icon/logo.png"/>
-			<div>
-				<ion-button (click)="goToConnectPage()" color="light">Se connecter</ion-button>
-				<ion-button color="medium">S'inscrire</ion-button>
-			</div>
-		</div>
-		<hr>
-		<form  #form="ngForm" (ngSubmit)="register(form)">
-			<ion-grid>
-				<ion-row color="primary">
-					<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-						<div text-center>
-							<h3>Créez votre compte!</h3>
-						</div>
-						<div padding>
-							<ion-item>
-								<ion-label floating>Nom</ion-label>
-								<ion-input name="name" type="text" ngModel required></ion-input>
-							</ion-item>
-							<ion-item>
-								<ion-label floating>Âge</ion-label>
-								<ion-input name="age" type="number" ngModel required></ion-input>
-							</ion-item>
-							<ion-item>
-								<ion-label floating>Email</ion-label>
-								<ion-input name="email" type="email" ngModel required></ion-input>
-							</ion-item>
-							<ion-item>
-								<ion-label floating>Mot de Passe</ion-label>
-								<ion-input name="password" type="password" ngModel required></ion-input>
-							</ion-item>
-						</div>
-						<div padding>
-							<ion-button (click)="addUserToFirebase()" class="submit-form-butt" size="large" type="submit" expand="block">Register</ion-button>
-						</div>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</form>
-	</div> -->
 
-	<!-- <ion-card text-center> -->
-			<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
-			<!-- <div>
-				<ion-button (click)="goToConnectPage()" color="light">Se connecter</ion-button>
-				<ion-button color="medium">S'inscrire</ion-button>
-			</div> -->
-		<h3>Créez votre compte!</h3>
-		<ion-item lines="none">
-			<ion-label floating>Nom</ion-label>
-			<ion-input [(ngModel)]="name"></ion-input>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-label floating>Email</ion-label>
-			<ion-input [(ngModel)]="email"></ion-input>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-label floating>Age</ion-label>
-			<ion-input [(ngModel)]="age" type="number"></ion-input>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-label floating>Mot de passe</ion-label>
-			<ion-input [(ngModel)]="password" type="password"></ion-input>
-		</ion-item>
-		<ion-button (click)="addUserToFirebase()">
-			S'inscrire
+	<div text-center *ngIf="!connected">
+		<div *ngIf="!login">
+				<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
+				<!-- <div>
+					<ion-button (click)="goToConnectPage()" color="light">Se connecter</ion-button>
+					<ion-button color="medium">S'inscrire</ion-button>
+				</div> -->
+						<!-- <hr> -->
+			<h3>Créez votre compte!</h3>
+			<ion-item lines="none">
+				<ion-label floating>Nom</ion-label>
+				<ion-input [(ngModel)]="name"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-label floating>Email</ion-label>
+				<ion-input [(ngModel)]="email"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-label floating>Age</ion-label>
+				<ion-input [(ngModel)]="age" type="number"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-label floating>Mot de passe</ion-label>
+				<ion-input [(ngModel)]="password" type="password"></ion-input>
+			</ion-item>
+			<ion-button (click)="addUserToFirebase()">
+				S'inscrire
+			</ion-button>
+		</div>
+	</div>
+
+	<div text-center *ngIf="connected">
+		<h3>Bienvenue sur votre profil {{ user.name }} !</h3>
+
+		<ion-button (click)="logOut()">
+			Se deconnecter
 		</ion-button>
-	<!-- </ion-card> -->
+	</div>
 
 </ion-content>

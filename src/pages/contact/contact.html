@@ -7,11 +7,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+		<div text-center *ngIf="connected">
+			<h3> Ajouter un ami </h3>
+			<ion-item lines="none">
+				<ion-label floating>Son ID</ion-label>
+				<ion-input [(ngModel)]="friendId"></ion-input>
+			</ion-item><br/>
+			<ion-button (click)="addFriend()">
+				Ajouter
+			</ion-button>
+		</div>
+
+		<div text-center *ngIf="!connected">
+			Vous devez etre connecté pour ajouter des amis
+		</div>
 </ion-content>

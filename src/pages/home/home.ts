@@ -15,6 +15,7 @@ export class HomePage {
 	 password = '';
 	 user = [];
 	 connected = false;
+	 login = true;
 
   constructor(public navCtrl: NavController, public afDB: AngularFireDatabase/*, private storage: Storage*/) {
   }
@@ -39,11 +40,11 @@ export class HomePage {
 				 password: action.payload.exportVal().password
 			 });
 			 this.connected = true;
+			 // console.log(this.user);
 			 // break;
 		 	}
 		 });
 	 });
-	 console.log(this.user);
  }
 
 	logOut() {
@@ -70,6 +71,32 @@ export class HomePage {
 		 this.connected = true;
 		 this.resetForm();
  	}
+ }
+
+checkLogin() {
+	if (this.email != "" && this.password != '') {
+		this.afDB.list('Users/').snapshotChanges().subscribe(actions => {
+			this.user = [];
+			actions.forEach(action => {
+				if (action.payload.exportVal().email == this.email &&
+				action.payload.exportVal().password == this.password) {
+				this.user.push({
+					key: action.key,
+					email: action.payload.exportVal().email,
+					age: action.payload.exportVal().age,
+					name: action.payload.exportVal().name,
+					password: action.payload.exportVal().password
+				});
+				this.connected = true;
+				this.resetForm();
+			 }
+			});
+		});
+ }
+}
+
+ changeFormGoal(value) {
+	 this.login = value;
  }
 
 }

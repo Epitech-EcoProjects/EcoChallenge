@@ -11,11 +11,11 @@
 	<div text-center *ngIf="!connected">
 		<div *ngIf="!login">
 				<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
-				<!-- <div>
-					<ion-button (click)="goToConnectPage()" color="light">Se connecter</ion-button>
-					<ion-button color="medium">S'inscrire</ion-button>
-				</div> -->
-						<!-- <hr> -->
+				<div>
+					<ion-button (click)="changeFormGoal(true)" color="medium">Se connecter</ion-button>
+					<ion-button (click)="changeFormGoal(false)" color="light">S'inscrire</ion-button>
+				</div>
+			<hr>
 			<h3>Créez votre compte!</h3>
 			<ion-item lines="none">
 				<ion-label floating>Nom</ion-label>
@@ -32,16 +32,46 @@
 			<ion-item lines="none">
 				<ion-label floating>Mot de passe</ion-label>
 				<ion-input [(ngModel)]="password" type="password"></ion-input>
-			</ion-item>
+			</ion-item><br/>
 			<ion-button (click)="addUserToFirebase()">
 				S'inscrire
+			</ion-button>
+		</div>
+		<div *ngIf="login">
+				<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
+				<div>
+					<ion-button (click)="changeFormGoal(true)" color="light">Se connecter</ion-button>
+					<ion-button (click)="changeFormGoal(false)" color="medium">S'inscrire</ion-button>
+				</div>
+			<hr>
+			<h3>Créez votre compte!</h3>
+			<ion-item lines="none">
+				<ion-label floating>Email</ion-label>
+				<ion-input [(ngModel)]="email"></ion-input>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-label floating>Mot de passe</ion-label>
+				<ion-input [(ngModel)]="password" type="password"></ion-input>
+			</ion-item><br/>
+			<ion-button (click)="checkLogin()">
+				Se connecter
 			</ion-button>
 		</div>
 	</div>
 
 	<div text-center *ngIf="connected">
-		<h3>Bienvenue sur votre profil {{ user.name }} !</h3>
 
+		<h3>Bienvenue sur votre profil {{ user[0].name }} !</h3>
+
+		<div>
+			id : {{ user[0].key }}<br/>
+		 	nom : {{ user[0].name }}<br/>
+		 	age : {{ user[0].age }}<br/>
+		 	email : {{ user[0].email }}<br/>
+		 	password : {{ user[0].password }}<br/>
+	 	</div>
+
+		 <br/>
 		<ion-button (click)="logOut()">
 			Se deconnecter
 		</ion-button>

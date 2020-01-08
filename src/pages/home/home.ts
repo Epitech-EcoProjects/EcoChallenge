@@ -34,6 +34,8 @@ export class HomePage {
 			 if (action.payload.exportVal().email == "augustin.leconte@epitech.eu") {
 			 this.user.push({
 				 key: action.key,
+				 level: action.payload.exportVal().level,
+				 xp: action.payload.exportVal().xp,
 				 email: action.payload.exportVal().email,
 				 age: action.payload.exportVal().age,
 				 name: action.payload.exportVal().name,

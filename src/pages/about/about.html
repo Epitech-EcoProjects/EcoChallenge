@@ -1,52 +1,89 @@
 <ion-header>
-  <ion-navbar>
+	<ion-navbar>
 		<ion-title>
-  		Challenge List
+			Challenge List
 		</ion-title>
-		<ion-buttons slot="end">
-		 <ion-button (click)="getTasks()">
-			 <ion-icon name="refresh" slot="icon-only"></ion-icon>
-		 </ion-button>
-	 </ion-buttons>
-  </ion-navbar>
+		<!-- <ion-buttons slot="end">
+			<ion-button (click)="getTasks()">
+				<ion-icon name="refresh" slot="icon-only"></ion-icon>
+			</ion-button>
+		</ion-buttons> -->
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<h1><b>Aujourd'hui</b></h1>
-  <h5>{{ currentDate }}</h5>
+	<h1><b>Tâches du jour</b></h1>
+	<h5>{{ currentDate }}</h5>
 
-	<ion-card *ngIf="addTask">
-	  <ion-item lines="none">
-	    <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
-	  </ion-item>
+	<!-- <ion-card *ngIf="addTask">
+		<ion-item lines="none">
+			<ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
+		</ion-item>
 		<ion-button (click)="addTaskToFirebase()" shape="round" slot="end">
-			<!-- <ion-icon slot="icon-only" name="add"></ion-icon> --> Ajouter
+			<ion-icon slot="icon-only" name="add"></ion-icon>  Ajouter
 		</ion-button>
-	</ion-card>
+	</ion-card> -->
 
-	<ion-button *ngIf="!addTask" (click)="showForm()" expand="block" class="add-button">
-  	<ion-icon name="add" slot="start"></ion-icon>
-  	Ajouter une tâche
+	<!-- <ion-button *ngIf="!addTask" (click)="showForm()" expand="block" class="add-button">
+		<ion-icon name="add" slot="start"></ion-icon>
+		Ajouter une tâche
 	</ion-button>
 
 	<ion-button *ngIf="addTask" (click)="showForm()" expand="block" class="add-button">
-  	<ion-icon name="close" slot="start"></ion-icon>
-  	Annuler
-	</ion-button>
+		<ion-icon name="close" slot="start"></ion-icon>
+		Annuler
+	</ion-button> -->
 
 	<ion-card *ngFor="let task of tasks">
 		<ion-item-sliding>
-		  <ion-item lines="none">
-		   <ion-checkbox (ionChange)="changeCheckState(task)" color="success" [(ngModel)]="task.checked" slot="start"></ion-checkbox>
-		    <ion-label>
-		      <h2 >{{ task.text }}</h2>
-		      <p>{{ task.jour }}</p>
-		    </ion-label>
-		  </ion-item>
+			<ion-item lines="none">
+				<ion-label>
+					<h2><u> {{ task.text }} </u></h2>
+					<p>{{ task.jour }}</p>
+				</ion-label>
+			</ion-item>
+			<ion-item>
+				<button ion-button item-start (click)="addTaskToUser(task)">
+					<ion-icon name="add-circle"></ion-icon>
+				</button>
+				<button ion-button item-start (click)="buttonClick()">
+				  <ion-icon name="eye"></ion-icon>
+				</button>
+			</ion-item>
 			<ion-item-options side="end">
-      	<ion-item-option color="danger" (click)="deleteTask(task)">
-        	<ion-icon name="trash" slot="icon-only"></ion-icon>
-      	</ion-item-option>
+				<ion-item-option color="danger" (click)="deleteTask(task)">
+					<ion-icon name="trash" slot="icon-only"></ion-icon>
+				</ion-item-option>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-card>
+
+	<h1><b>Mes taches</b></h1>
+	<!-- <h5>{{ currentDate }}</h5> -->
+
+	<ion-card *ngFor="let myTask of myTasks">
+		<ion-item-sliding>
+			<ion-item lines="none">
+				<!-- <ion-checkbox (ionChange)="changeCheckState(myTask)" color="success" [(ngModel)]="myTask.checked" slot="start"></ion-checkbox> -->
+				<ion-label>
+					<h2><u> {{ myTask.text }} </u></h2>
+				</ion-label>
+			</ion-item>
+			<ion-item>
+				<button class="validateButton" ion-button item-start (click)="changeCheckState(myTask)">
+					<ion-icon name="checkmark"></ion-icon>
+				</button>
+				<button ion-button item-start (click)="buttonClick()">
+					<ion-icon name="eye"></ion-icon>
+				</button>
+				<button class="deleteButton" ion-button item-end (click)="deleteTask(myTask)">
+					<ion-icon name="trash"></ion-icon>
+				</button>
+			</ion-item>
+			<ion-item-options side="end">
+				<!-- <ion-item-option color="danger" (click)="deleteTask(myTask)">
+					<ion-icon name="trash" slot="icon-only"></ion-icon>
+				</ion-item-option> -->
 			</ion-item-options>
 		</ion-item-sliding>
 	</ion-card>

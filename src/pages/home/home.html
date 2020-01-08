@@ -61,7 +61,7 @@
 
 	<div text-center *ngIf="connected">
 
-		<h3>Bienvenue sur votre profil {{ user[0].name }} !</h3>
+		<h3>Bienvenue {{ user[0].name }} !</h3>
 
 		<div>
 			id : {{ user[0].key }}<br/>
@@ -69,6 +69,8 @@
 		 	age : {{ user[0].age }}<br/>
 		 	email : {{ user[0].email }}<br/>
 		 	password : {{ user[0].password }}<br/>
+			level : {{ user[0].level}}<br/>
+			xp : {{ user[0].xp }}<br/>
 	 	</div>
 
 		 <br/>

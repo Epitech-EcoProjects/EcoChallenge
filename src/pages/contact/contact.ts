@@ -15,6 +15,7 @@ export class ContactPage {
 	connected = false;
 	friendList = [];
 	list = [];
+	listSize = 0;
 	i = 0;
 
   constructor(public navCtrl: NavController, public afDB: AngularFireDatabase) {
@@ -33,6 +34,7 @@ export class ContactPage {
 				 password: action.payload.exportVal().password
 			 });
 			 this.list.push({friends: action.payload.exportVal().friends});
+			 // this.listSize = action.payload.exportVal().friends.length;
 			 this.connected = true;
 			 this.itemRef = this.afDB.object('Users/' + action.key);
 			}

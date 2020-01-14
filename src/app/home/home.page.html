@@ -1,20 +1,23 @@
 <ion-header>
-  <ion-navbar>
-		<ion-title>
-  		HomePage
-		</ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
 
-	<div text-center *ngIf="!connected">
+	<div class="ion-text-center" *ngIf="!connected">
 		<div *ngIf="!login">
-				<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
-				<div>
-					<ion-button (click)="changeFormGoal(true)" color="medium">Se connecter</ion-button>
-					<ion-button (click)="changeFormGoal(false)" color="light">S'inscrire</ion-button>
-				</div>
+			<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
+			<div>
+				<ion-button (click)="changeFormGoal(true)" color="light">Se connecter</ion-button>
+				<ion-button (click)="changeFormGoal(false)" color="medium">S'inscrire</ion-button>
+			</div>
 			<hr>
 			<h3>Créez votre compte!</h3>
 			<ion-item lines="none">
@@ -38,13 +41,13 @@
 			</ion-button>
 		</div>
 		<div *ngIf="login">
-				<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
-				<div>
-					<ion-button (click)="changeFormGoal(true)" color="light">Se connecter</ion-button>
-					<ion-button (click)="changeFormGoal(false)" color="medium">S'inscrire</ion-button>
-				</div>
+			<!-- <img class="logo-connect" src="assets/icon/logo.png"/> -->
+			<div>
+				<ion-button (click)="changeFormGoal(true)" color="medium">Se connecter</ion-button>
+				<ion-button (click)="changeFormGoal(false)" color="light">S'inscrire</ion-button>
+			</div>
 			<hr>
-			<h3>Créez votre compte!</h3>
+			<h3>Connectez vous!</h3>
 			<ion-item lines="none">
 				<ion-label floating>Email</ion-label>
 				<ion-input [(ngModel)]="email"></ion-input>
@@ -59,21 +62,22 @@
 		</div>
 	</div>
 
-	<div text-center *ngIf="connected">
+	<div class="ion-text-center" *ngIf="connected">
 
 		<h3>Bienvenue {{ user[0].name }} !</h3>
 
 		<div>
 			id : {{ user[0].key }}<br/>
-		 	nom : {{ user[0].name }}<br/>
-		 	age : {{ user[0].age }}<br/>
-		 	email : {{ user[0].email }}<br/>
-		 	password : {{ user[0].password }}<br/>
+			nom : {{ user[0].name }}<br/>
+			age : {{ user[0].age }}<br/>
+			email : {{ user[0].email }}<br/>
+			password : {{ user[0].password }}<br/>
 			level : {{ user[0].level}}<br/>
-			xp : {{ user[0].xp }}<br/>
-	 	</div>
+			<ion-progress-bar value="0.25" buffer="0.5">{{ user[0].xp }} / {{ user[0].level * 100 }}</ion-progress-bar>
+			<br/>
+		</div>
 
-		 <br/>
+		<br/>
 		<ion-button (click)="logOut()">
 			Se deconnecter
 		</ion-button>

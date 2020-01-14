@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
 
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
-	selector: 'page-about',
-	templateUrl: 'about.html'
+	selector: 'app-list',
+	templateUrl: 'list.page.html',
+	styleUrls: ['list.page.scss']
 })
-export class AboutPage {
+export class ListPage implements OnInit {
+
 	currentDate: string;
 	myTask = '';
 	addTask: boolean;
@@ -18,7 +19,7 @@ export class AboutPage {
 	connected = false;
 	itemRef: AngularFireObject<any>;
 
-	constructor(public navCtrl: NavController, public afDB: AngularFireDatabase) {
+	constructor(public afDB: AngularFireDatabase) {
 		const date = new Date();
 		const options = { weekday: 'long', month: 'long', day: 'numeric' };
 		this.currentDate = date.toLocaleDateString('fr-FR', options);
@@ -27,7 +28,6 @@ export class AboutPage {
 
 	ngOnInit() {
 		this.afDB.list('Users/').snapshotChanges().subscribe(actions => {
-			this.user = [];
 			actions.forEach(action => {
 				if (action.payload.exportVal().email == "augustin.leconte@epitech.eu") {
 					this.key = action.key;
@@ -120,4 +120,5 @@ export class AboutPage {
 	deleteTask(task: any) {
 		this.afDB.list('Users/' + this.key + '/tasks/').remove(task.key);
 	}
+
 }

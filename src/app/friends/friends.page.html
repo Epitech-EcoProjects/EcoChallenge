@@ -1,13 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Contact
+      Friends
     </ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-		<div text-center *ngIf="connected">
+		<div class="ion-text-center" *ngIf="connected">
 			<div id=addFriend>
 				<h3> Ajouter un ami </h3>
 				<ion-item lines="none">
@@ -26,7 +29,7 @@
 			</div>
 		</div>
 
-		<div text-center *ngIf="!connected">
+		<div class="ion-text-center" *ngIf="!connected">
 			Vous devez etre connecté pour ajouter des amis
 		</div>
 </ion-content>

@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
 
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'app-friends',
+  templateUrl: './friends.page.html',
+  styleUrls: ['./friends.page.scss'],
 })
-export class ContactPage {
+export class FriendsPage implements OnInit {
 
 	friendId = '';
 	itemRef: AngularFireObject<any>;
@@ -18,7 +18,7 @@ export class ContactPage {
 	listSize = 0;
 	i = 0;
 
-  constructor(public navCtrl: NavController, public afDB: AngularFireDatabase) {
+  constructor(public afDB: AngularFireDatabase) {
   }
 
 	ngOnInit() {
@@ -51,5 +51,6 @@ export class ContactPage {
 			this.friendId = "";
  		 }
   	}
+
 
 }

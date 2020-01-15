@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons *ngIf="connected" slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
@@ -24,7 +24,7 @@
 			<div id=friendList>
 				<h3> Mes amis </h3>
 				<!-- <div *ngFor="let index of listSize"> -->
-					<li *ngFor="let friend of list">{{ friend.friends[0] }}</li>
+					<li *ngFor="let friend of friendList">{{ friend.id }}</li>
 				<!-- </div> -->
 			</div>
 		</div>

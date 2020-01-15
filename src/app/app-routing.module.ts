@@ -18,6 +18,26 @@ const routes: Routes = [
   {
     path: 'friends',
     loadChildren: () => import('./friends/friends.module').then( m => m.FriendsPageModule)
+  },
+  {
+    path: 'challenge-description',
+    loadChildren: () => import('./challenge-description/challenge-description.module').then( m => m.ChallengeDescriptionPageModule)
+  },
+  {
+    path: 'challenge-description',
+    loadChildren: () => import('./challenge-description/challenge-description.module').then( m => m.ChallengeDescriptionPageModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'community',
+    loadChildren: () => import('./community/community.module').then( m => m.CommunityPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   }
 ];
 

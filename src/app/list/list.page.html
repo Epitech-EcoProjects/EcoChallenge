@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons *ngIf="connected" slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
@@ -37,14 +37,14 @@
 			<ion-item lines="none">
 				<ion-label>
 					<h2><u> {{ task.text }} </u></h2>
-					<p>{{ task.jour }}</p>
+					<p>{{ task.date }}</p>
 				</ion-label>
 			</ion-item>
 			<ion-item>
 				<button ion-button item-start (click)="addTaskToUser(task)">
 					<ion-icon name="add-circle"></ion-icon>
 				</button>
-				<button ion-button item-start (click)="buttonClick()">
+				<button ion-button item-start (click)="openTaskDetail(task)">
 				  <ion-icon name="eye"></ion-icon>
 				</button>
 			</ion-item>

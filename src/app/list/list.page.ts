@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFireDatabase } from '@angular/fire/database';
+import { ModalController } from '@ionic/angular';
+import { ChallengeDescriptionPage } from '../challenge-description/challenge-description.page';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 
 @Component({
 	selector: 'app-list',
@@ -19,7 +21,7 @@ export class ListPage implements OnInit {
 	connected = false;
 	itemRef: AngularFireObject<any>;
 
-	constructor(public afDB: AngularFireDatabase) {
+	constructor(public afDB: AngularFireDatabase, public modalController: ModalController) {
 		const date = new Date();
 		const options = { weekday: 'long', month: 'long', day: 'numeric' };
 		this.currentDate = date.toLocaleDateString('fr-FR', options);
@@ -51,6 +53,18 @@ export class ListPage implements OnInit {
 			});
 		}
 	}
+
+	async presentModal() {
+		const modal = await this.modalController.create({
+			component: ChallengeDescriptionPage
+		});
+		return await modal.present();
+	}
+
+	openTaskDetail(task: any) {
+		console.log(task);
+	}
+
 
 	showForm() {
 		this.addTask = !this.addTask;
